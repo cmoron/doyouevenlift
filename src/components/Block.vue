@@ -3,7 +3,7 @@
     <h3>{{ block.name }}</h3>
 
     <ul class="ex_ul">
-      <li class="ex_li" v-for="exercise of this.exercises">
+      <li class="ex_li" v-for="exercise of this.exercises" :key="exercise.id">
         <Exercise
           :exercise="exercise"
           :key="exercise.id"
