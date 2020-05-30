@@ -1,4 +1,6 @@
-# dyel
+# Do you even lift ?
+
+App running on vuejs to store any types of sport sessions.
 
 ## Project setup
 ```
