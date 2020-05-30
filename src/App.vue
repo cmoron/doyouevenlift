@@ -1,28 +1,44 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>{{ title }}</h1>
+    <Session
+      v-for="session in sessions"
+      :session="session"
+      :key="session.id"
+    ></Session>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Axios from 'axios'
+import Session from './components/Session.vue'
 
 export default {
   name: 'App',
+  data: function() {
+    return {
+      title: 'Do you even lift ?',
+      sessions: []
+    }
+  },
   components: {
-    HelloWorld
+    Session
+  },
+
+  mounted() {
+
+    Axios.get('http://localhost:3000/api/sessions').then(sessionResponse => {
+      let index = 0;
+      for(let sessionData of sessionResponse.data) {
+        this.sessions.push({
+          id: sessionData._id,
+          name: sessionData.name,
+          groups: sessionData.groups,
+          even: index % 2 == 0
+        });
+        ++index
+      }
+    })
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
