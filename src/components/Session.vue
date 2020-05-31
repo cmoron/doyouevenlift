@@ -62,6 +62,7 @@ export default {
 
         for (let sessionBlock of groupResponse.data.blocks) {
           Axios.get(Vue.prototype.$hostname + '/api/block/' + sessionBlock).then(blockResponse => {
+            // TODO Check unicity.
             this.blocks.push(blockResponse.data);
           }).catch(err => {
             console.error("Failed to load block with id : " + sessionBlock, err);
