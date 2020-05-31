@@ -26,14 +26,12 @@ export default {
   },
 
   mounted() {
-    for (let groupBlock of this.group.blocks) {
-      Axios.get(Vue.prototype.$hostname + '/api/block/' + groupBlock).then(blockResponse => {
-        this.blocks.push(blockResponse.data);
-      }).catch(err => {
-        console.error("Failed to load block with id : " + groupBlock, err);
-      });
-    }
-  },
+    Axios.get(Vue.prototype.$hostname + '/api/group/' + this.group._id + '/blocks').then(blockResponse => {
+      this.blocks = blockResponse.data;
+    }).catch (err => {
+      console.error('Failed to load blocks from group id : ' + this.group._id, err);
+    });
+  }
 }
 
 

@@ -56,23 +56,17 @@ export default {
   },
 
   mounted() {
-    for (let sessionGroup of this.session.groups) {
-      Axios.get(Vue.prototype.$hostname + '/api/group/' + sessionGroup).then(groupResponse => {
-        this.groups.push(groupResponse.data);
+    Axios.get(Vue.prototype.$hostname + '/api/session/' + this.session.id  + '/blocks').then(blockResponse => {
+      this.blocks = blockResponse.data;
+    }).catch(err =>  {
+      console.error('Failed to load blocks from session id : ' + this.session.id, err);
+    });
 
-        for (let sessionBlock of groupResponse.data.blocks) {
-          Axios.get(Vue.prototype.$hostname + '/api/block/' + sessionBlock).then(blockResponse => {
-            // TODO Check unicity.
-            this.blocks.push(blockResponse.data);
-          }).catch(err => {
-            console.error("Failed to load block with id : " + sessionBlock, err);
-          });
-        }
-
-      }).catch(err => {
-        console.error("Failed to load group with id : " + sessionGroup, err);
-      });
-    }
+    Axios.get(Vue.prototype.$hostname + '/api/session/' + this.session.id + '/groups').then(groupResponse => {
+      this.groups = groupResponse.data;
+    }).catch(err => {
+      console.error('Failed to load groups from session id ' + this.session.id, err);
+    });
   },
 }
 </script>

@@ -36,13 +36,11 @@ export default {
   },
 
   mounted() {
-    for (let blockExercise of this.block.exercises) {
-      Axios.get(Vue.prototype.$hostname + '/api/exercise/' + blockExercise).then(exerciseResponse => {
-        this.exercises.push(exerciseResponse.data);
-      }).catch(err => {
-        console.error("Failed to load exercise with id: " + blockExercise, err);
-      });
-    }
+    Axios.get(Vue.prototype.$hostname + '/api/block/' + this.block._id + '/exercises').then(exerciseResponse => {
+      this.exercises = exerciseResponse.data;
+    }).catch(err => {
+      console.error('Failed to load exercises from block with id ' + this.block._id, err);
+    });
   }
 }
 </script>
