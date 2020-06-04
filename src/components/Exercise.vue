@@ -11,6 +11,6 @@
 export default {
   props: {
     exercise: Object
-  },
+  }
 }
 </script>

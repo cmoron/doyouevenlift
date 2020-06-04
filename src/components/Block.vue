@@ -4,10 +4,7 @@
 
     <ul class="ex_ul">
       <li class="ex_li" v-for="exercise of this.exercises" :key="exercise.id">
-        <Exercise
-          :exercise="exercise"
-          :key="exercise.id"
-          ></Exercise>
+        <Exercise :exercise="exercise" :key="exercise.id"></Exercise>
       </li>
     </ul>
   </div>
@@ -16,12 +13,12 @@
 <script>
 import Vue from 'vue'
 import Axios from 'axios'
-import Exercise from './Exercise.vue';
+import Exercise from './Exercise.vue'
 
 export default {
   name: 'Block',
 
-  data: function() {
+  data: function () {
     return {
       exercises: []
     }
@@ -35,12 +32,19 @@ export default {
     Exercise
   },
 
-  mounted() {
-    Axios.get(Vue.prototype.$hostname + '/api/block/' + this.block._id + '/exercises').then(exerciseResponse => {
-      this.exercises = exerciseResponse.data;
-    }).catch(err => {
-      console.error('Failed to load exercises from block with id ' + this.block._id, err);
-    });
+  mounted () {
+    Axios.get(
+      Vue.prototype.$hostname + '/api/block/' + this.block._id + '/exercises'
+    )
+      .then(exerciseResponse => {
+        this.exercises = exerciseResponse.data
+      })
+      .catch(err => {
+        console.error(
+          'Failed to load exercises from block with id ' + this.block._id,
+          err
+        )
+      })
   }
 }
 </script>

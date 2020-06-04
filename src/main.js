@@ -5,5 +5,5 @@ Vue.config.productionTip = false
 Vue.prototype.$hostname = 'http://localhost:3000'
 
 new Vue({
-  render: h => h(App),
+  render: h => h(App)
 }).$mount('#app')
