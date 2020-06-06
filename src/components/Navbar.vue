@@ -4,10 +4,10 @@
 
 <script>
 export default {
-  data: function() {
+  data: function () {
     return {
-      title: "Do you even lift ?"
-    };
+      title: 'Do you even lift ?'
+    }
   }
 }
 </script>
