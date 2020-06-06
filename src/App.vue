@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>{{ title }}</h1>
+    <Navbar />
     <Session
       v-for="session in sessions"
       :session="session"
@@ -11,18 +11,19 @@
 
 <script>
 import Axios from "axios";
-import Session from "./components/Session.vue";
+import Session from "@/components/Session";
+import Navbar from "@/components/Navbar";
 
 export default {
   name: "App",
   data: function() {
     return {
-      title: "Do you even lift ?",
       sessions: []
     };
   },
   components: {
-    Session
+    Session,
+    Navbar
   },
 
   mounted() {
