@@ -3,9 +3,11 @@ body {
     background: #FFF5ED;
 }
 
+a {
+    text-decoration: none;
+}
+
 h1 {
-    !important;
-    text-align: center;
     color: #412722;
 }
 
