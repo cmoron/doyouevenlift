@@ -5,6 +5,11 @@ body {
 
 a {
     text-decoration: none;
+    color: #412722;
+}
+
+a:hover {
+    color: #816852;
 }
 
 h1 {
@@ -30,6 +35,10 @@ h2.odd {
 
 h3 {
     color: #db504a;
+}
+
+input {
+    margin-bottom: 5px;
 }
 
 .ex_repeat {
@@ -75,4 +84,16 @@ th {
 td {
     background : #DCCABA;
     padding-left: 10px;
+}
+
+.nav_elem {
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.error_message {
+    font-size: 80%;
+    font-weight: bold;
+    color: #f00;
 }
