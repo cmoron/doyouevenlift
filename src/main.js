@@ -5,7 +5,7 @@ import store from './store'
 import App from './App.vue'
 
 Vue.config.productionTip = false
-Vue.prototype.$hostname = 'http://znarch:3000'
+Vue.prototype.$hostname = 'http://localhost:3000'
 
 // Setting up default vue's http modules for api calls
 Vue.prototype.$http = Axios
